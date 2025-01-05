@@ -1,0 +1,323 @@
+<html><head><base href="/" />
+<title>LUAU Roblox Developer Portfolio</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+  }
+
+  body {
+    background: #0a0a0a;
+    color: #00ff88; 
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  .matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  header {
+    padding: 2rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 2px solid #00ff88;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ff88, transparent);
+    animation: scanline 2s linear infinite;
+  }
+
+  p {
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+  }
+
+  @keyframes scanline {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .logo {
+    width: 150px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #00ff88);
+    animation: pulse 2s infinite alternate;
+    transition: transform 0.3s;
+  }
+
+  .logo:hover {
+    transform: rotate(360deg) scale(1.1);
+    transition: transform 1s;
+  }
+
+  @keyframes pulse {
+    from {
+      filter: drop-shadow(0 0 5px #00ff88);
+      transform: scale(1);
+    }
+    to {
+      filter: drop-shadow(0 0 20px #00ff88);
+      transform: scale(1.05);
+    }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    margin-top: 20px;
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .project-card {
+    background: rgba(0, 40, 20, 0.9);
+    border: 1px solid #00ff88;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(45deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+    transition: 0.5s;
+    animation: shine 3s infinite;
+  }
+
+  @keyframes shine {
+    0% { transform: translate(-30%, -30%) rotate(0deg); }
+    100% { transform: translate(30%, 30%) rotate(45deg); }
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+  }
+
+  .skills {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid #00ff88;
+    border-radius: 20px;
+    transition: all 0.3s;
+    position: relative;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  .skill-tag:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    background: rgba(0, 255, 136, 0.2);
+    cursor: pointer;
+  }
+
+  .price-tag {
+    color: #00ff88;
+    font-size: 1.3em;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: rgba(0, 40, 20, 0.9);
+    border-radius: 8px;
+    border: 1px solid #00ff88;
+    display: inline-block;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  }
+
+  .robux-icon, .dollar-icon {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  .dollar-icon {
+    color: #00ff88;
+  }
+
+  .project-card .price {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #00ff88;
+    font-size: 1.2em;
+  }
+
+  h1, h2, h3 {
+    color: #00ff88;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
+    letter-spacing: 1px;
+  }
+
+  .contact {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(0, 40, 20, 0.8);
+    border-radius: 8px;
+    border: 1px solid #00ff88;
+  }
+
+  .contact p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+</style>
+</head>
+<body>
+  <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+  
+  <header>
+    <h1>LUAU Roblox Developer</h1>
+  </header>
+
+  <div class="container">
+    <section class="about">
+      <h2>About Me</h2>
+      <p>Hi! im beefy also known as beefyCreator and i've been a developer of roblox for 2 years now.</p>
+    </section>
+
+    <section class="projects">
+      <div class="project-card">
+        <h3>Combat System</h3>
+        <p>I can make combat systems that not only feel smooth but make you feel smooth.... yeah im not trying to make another joke ever again</p>
+        <div class="skill-tag">Combat</div>
+        <div class="skill-tag">Animation</div>
+        <p class="price"><span class="robux-icon">R$</span>5,000 / <span class="dollar-icon">$</span>50</p>
+      </div>
+
+      <div class="project-card">
+        <h3>leaderstat System</h3>
+        <p>I can make you a leaderstat system which is a money system it will also have anti-exploit system so you dont get your game hacked.</p>
+        <div class="skill-tag">DataStore</div>
+        <div class="skill-tag">Security</div>
+        <p class="price"><span class="robux-icon">R$</span>4,000 / <span class="dollar-icon">$</span>40</p>
+      </div>
+
+      <div class="project-card">
+        <h3>AI Pathfinding</h3>
+        <p>I can make you a smart AI bot that knows how to get across point A to point B. oh and doesnt walk into walls</p>
+        <div class="skill-tag">AI</div>
+        <div class="skill-tag">Optimization</div>
+        <p class="price"><span class="robux-icon">R$</span>3,000 / <span class="dollar-icon">$</span>30</p>
+      </div>
+    </section>
+
+    <section class="skills">
+      <h2>Skills</h2>
+      <div class="skill-tag">RemoteEvents</div>
+      <div class="skill-tag">DataStores</div>
+      <div class="skill-tag">ModuleScripts</div>
+      <div class="skill-tag">ReplicatedStorage</div>
+      <div class="skill-tag">ServerScriptService</div>
+      <div class="skill-tag">StarterGui</div>
+      <div class="skill-tag">Workspace</div>
+      <div class="skill-tag">HttpService</div>
+      <div class="skill-tag">MarketplaceService</div>
+      <div class="price-tag">Prices start at <span class="robux-icon">R$</span>1,000 / <span class="dollar-icon">$</span>10</div>
+    </section>
+
+    <section class="contact">
+      <h2>Contact Me</h2>
+      <p>Email: gtrackback@gmail.com</p>
+      <p>Discord: criptec_offical</p>
+    </section>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = 'function local end if then else while do for in pairs return break continue';
+    const words = letters.split(' ');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    const drops = [];
+    const colors = ['#0077ff', '#ff3333', '#888888']; 
+    const dropColors = [];
+
+    for (let i = 0; i < columns; i++) {
+      drops[i] = 1;
+      dropColors[i] = colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = words[Math.floor(Math.random() * words.length)];
+        ctx.fillStyle = dropColors[i];
+        ctx.font = fontSize + 'px monospace';
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+          dropColors[i] = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        drops[i]++;
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    setInterval(draw, 33);
+  </script>
+</body>
+</html>
